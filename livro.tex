@@ -1,0 +1,38 @@
+% ==============================================================
+% LIVRO-TADS — Documento raiz (esqueleto)
+% ------------------------------------------------------------
+% Este arquivo só ORGANIZA o livro: capítulos entram por \input.
+% Tudo que for de outras equipes (capa, folha de rosto, ficha
+% técnica, agradecimentos, prefácio, organizadores, contracapa)
+% está como PLACEHOLDER — só pra o documento compilar do início
+% ao fim. A Diagramação substitui pelo material final deles.
+% ==============================================================
+
+\documentclass[12pt,twoside,openright,a4paper]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+
+\begin{document}
+
+% ---------- PARTES DE OUTRAS EQUIPES (placeholders) ----------
+\input{placeholders/capa}
+\input{placeholders/folha-de-rosto}
+\input{placeholders/ficha-tecnica}
+\input{placeholders/agradecimentos}
+\input{placeholders/prefacio}
+
+\tableofcontents
+\clearpage
+
+% ---------- CAPÍTULOS (sua parte: linkar os artigos aqui) ----
+\input{capitulos/_modelo-capitulo/capitulo}
+% \input{capitulos/nome-do-autor/capitulo}
+
+% ---------- PARTES DE OUTRAS EQUIPES (placeholders) ----------
+\input{placeholders/organizadores}
+\input{placeholders/contracapa}
+
+\end{document}
