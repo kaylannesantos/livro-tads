@@ -12,8 +12,19 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[brazil]{babel}
+\usepackage[brazilian]{babel}
 \usepackage{graphicx}
+
+% A classe "book" não traz \begin{abstract} (isso é coisa de "article").
+% Como os capítulos no formato SOMMA vão ter resumo, definimos aqui um
+% ambiente simples pra eles poderem usar \begin{abstract}...\end{abstract}.
+\newenvironment{abstract}{%
+  \small
+  \begin{center}\textbf{Resumo}\end{center}
+  \begin{quotation}
+}{%
+  \end{quotation}
+}
 
 \begin{document}
 
@@ -29,6 +40,7 @@
 
 % ---------- CAPÍTULOS (sua parte: linkar os artigos aqui) ----
 \input{capitulos/_modelo-capitulo/capitulo}
+\input{capitulos/maria-silva/capitulo}
 % \input{capitulos/nome-do-autor/capitulo}
 
 % ---------- PARTES DE OUTRAS EQUIPES (placeholders) ----------
