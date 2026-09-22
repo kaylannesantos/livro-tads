@@ -1,0 +1,51 @@
+\cleardoublepage
+\setcounter{section}{0}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+
+% Adiciona no sumário do livro
+\addcontentsline{toc}{chapter}{Pipeline de Dados Inteligentes para Segurança Pública - \textit{Herminio de Barros Neto}}
+
+% --- CABEÇALHO ---
+\begin{center}
+    {\fontsize{14}{16}\selectfont\color{sommagreen}\textbf{Pipeline de Dados Inteligentes para Segurança Pública} \\ Uma abordagem arquitetural com Python e Modelos de Linguagem} \\[1cm]
+    
+    {\fontsize{12}{14}\selectfont\textbf{Herminio de Barros Neto\textsuperscript{1*}, Antonio Meireles Alves Neto\textsuperscript{2}}} \\[0.5cm]
+    
+    {\fontsize{10}{12}\selectfont
+    \textsuperscript{1}Departamento de Computação e Sistemas, Instituição de Origem - Campus, Cidade, Estado, Brasil.\\[0.2cm]
+    \textsuperscript{2}Piauí Gov Tech - Teresina, Piauí, Brasil.
+    }
+\end{center}
+
+\vspace{0.8cm}
+
+% --- RESUMO ---
+\noindent {\fontsize{10}{12}\selectfont\color{sommagreen}\textbf{RESUMO}} \\[0.2cm]
+\noindent {\fontsize{10}{12}\selectfont
+\textbf{Introdução}: A estruturação de informações em boletins de ocorrência é um desafio para a segurança pública moderna. \textbf{Objetivo}: Apresentar a arquitetura de um pipeline de dados inteligente, capaz de integrar a extração e a correlação de dados textuais. \textbf{Metodologia}: O sistema foi desenvolvido com backend utilizando o framework Django e Python, orquestração de rotinas via Apache Airflow e frontend em Next.js com Tailwind CSS. \textbf{Resultados e Discussão}: A integração de bancos vetoriais, como o Qdrant, operando em paralelo com o MongoDB, acelerou as buscas em relatos e denúncias anônimas em ambientes de alta demanda. \textbf{Conclusão}: A arquitetura modularizada provou-se resiliente e de fácil manutenção para cenários governamentais críticos.
+}
+
+\vspace{0.5cm}
+
+% Caixa de Palavras-chave
+\begin{tcolorbox}[colframe=sommagreen, colback=white, sharp corners, boxrule=0.8pt, arc=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]
+\fontsize{10}{12}\selectfont
+\textcolor{sommagreen}{\textbf{PALAVRAS-CHAVE:}} Segurança pública. Next.js. Inteligência artificial. Bancos vetoriais.
+\end{tcolorbox}
+
+\vspace{1cm}
+
+% --- TEXTO ---
+\section{Introdução}
+A modernização dos sistemas governamentais exige plataformas capazes de processar grandes volumes de texto não estruturado com eficiência e segurança. Projetos voltados à segurança pública, que demandam o cruzamento rápido de dados oriundos de boletins de ocorrência e investigações, beneficiam-se diretamente das novas abordagens do ecossistema de dados moderno \cite{silva2023}. 
+
+\section{Metodologia Arquitetural}
+Para suportar a carga de acessos concorrentes e garantir a responsividade da interface de usuário, optou-se pela separação completa das responsabilidades: um backend robusto em Django gerencia a regra de negócios, enquanto o Next.js lida com a renderização \cite{carvalho2024}. A orquestração das atualizações de dados e processamento de linguagem natural foi delegada ao Apache Airflow, mantendo os índices de busca sempre atualizados sem onerar o servidor principal.
+
+% --- REFERÊNCIAS ---
+\vspace{1cm}
+\noindent{\fontsize{12}{14}\bfseries\color{sommagreen}REFERÊNCIAS}
+\vspace{0.3cm}
+
+\printbibliography[heading=nossabibliografia]

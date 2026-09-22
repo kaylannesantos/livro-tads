@@ -1,50 +1,44 @@
-% ==============================================================
-% LIVRO-TADS — Documento raiz (esqueleto)
-% ------------------------------------------------------------
-% Este arquivo só ORGANIZA o livro: capítulos entram por \input.
-% Tudo que for de outras equipes (capa, folha de rosto, ficha
-% técnica, agradecimentos, prefácio, organizadores, contracapa)
-% está como PLACEHOLDER — só pra o documento compilar do início
-% ao fim. A Diagramação substitui pelo material final deles.
-% ==============================================================
+\documentclass[12pt,a4paper,oneside]{book}
 
-\documentclass[12pt,twoside,openright,a4paper]{book}
+% Carrega as configurações (garanta que configuracoes.tex está na mesma pasta)
+\input{configuracoes}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[brazilian]{babel}
-\usepackage{graphicx}
-
-% A classe "book" não traz \begin{abstract} (isso é coisa de "article").
-% Como os capítulos no formato SOMMA vão ter resumo, definimos aqui um
-% ambiente simples pra eles poderem usar \begin{abstract}...\end{abstract}.
-\newenvironment{abstract}{%
-  \small
-  \begin{center}\textbf{Resumo}\end{center}
-  \begin{quotation}
-}{%
-  \end{quotation}
-}
+% Registre os arquivos .bib.
+\addbibresource[glob=true]{artigos/*/refs.bib}
 
 \begin{document}
 
-% ---------- PARTES DE OUTRAS EQUIPES (placeholders) ----------
-\input{placeholders/capa}
-\input{placeholders/folha-de-rosto}
-\input{placeholders/ficha-tecnica}
-\input{placeholders/agradecimentos}
-\input{placeholders/prefacio}
+\frontmatter
+
+\begin{titlepage}
+    \centering
+    \vspace*{5cm}
+    {\fontsize{24}{28}\selectfont\color{sommagreen}\textbf{TÍTULO DO LIVRO}} \\[1cm]
+    {\Large Subtítulo do Livro ou Edição} \\[3cm]
+    {\large Organização: Nome do Organizador} 
+    
+    \vfill % Correção aplicada aqui
+    
+    {\large Teresina, Brasil \\ \the\year}
+\end{titlepage}
 
 \tableofcontents
-\clearpage
 
-% ---------- CAPÍTULOS (linkar os artigos aqui) ----
-\input{capitulos/_modelo-capitulo/capitulo}
-\input{capitulos/maria-silva/capitulo}
-% \input{capitulos/nome-do-autor/capitulo}
+\mainmatter
 
-% ---------- PARTES DE OUTRAS EQUIPES (placeholders) ----------
-\input{placeholders/organizadores}
-\input{placeholders/contracapa}
+% --- INSERÇÃO DO ARTIGO 01 ---
+\begin{refsection}
+    \import{artigos/artigo_01/}{artigo.tex}
+\end{refsection}
+
+% --- INSERÇÃO DO ARTIGO 02 (Comentado até o arquivo existir) ---
+\begin{refsection}
+    \import{artigos/artigo_02/}{artigo.tex}
+\end{refsection}
+
+% --- INSERÇÃO DO ARTIGO 03 (Comentado até o arquivo existir) ---
+\begin{refsection}
+    \import{artigos/artigo_03/}{artigo.tex}
+\end{refsection}
 
 \end{document}
