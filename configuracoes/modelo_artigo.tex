@@ -1,0 +1,44 @@
+% PONTE ENTRE O MODELO E O LIVRO
+% ==============================
+% Público: autores usam \aberturaartigo dentro de artigos/modelo_artigo/.
+% Os campos vêm de metadados.tex. Não edite esta macro para um artigo isolado;
+% isso causaria diferenças de layout entre capítulos.
+
+\newcommand{\aberturaartigo}{%
+  \capitulocapa
+    {\ArtigoTitulo}
+    {\ArtigoSubtitulo}
+    {\ArtigoAutores\\ \ArtigoAfiliacoes\\ \ArtigoContatos}
+    {\textbf{Resumo.} \ArtigoResumo}
+    {\ArtigoAutores}%
+  % \capitulocapa encerra a página de abertura, que é a única com o
+  % mini-cabeçalho. As páginas seguintes usam o cabeçalho corrente do artigo.
+  \pagestyle{fancy}%
+  \noindent\textbf{Palavras-chave:} \ArtigoPalavrasChave\par\vspace{0.8cm}
+  \begin{center}
+    {\fontsize{14}{16}\selectfont\color{sommagreen}\textbf{\ArtigoTituloIngles}}
+  \end{center}
+  \noindent\textbf{Abstract.} \ArtigoAbstract\par\vspace{0.4cm}
+  \noindent\textbf{Keywords:} \ArtigoKeywords\par\vspace{0.8cm}
+}
+
+% O modelo deixa as referências por último e evita que autores repitam a mesma
+% configuração de biblatex em cada artigo.
+\newcommand{\referenciasartigo}{%
+  \section*{Referências}
+  \printbibliography[heading=nossabibliografia]
+}
+
+% Figura no padrão já usado pelo template_tcc_monografia: ambiente figure[H],
+% legenda acima, label para referência, imagem centralizada e fonte abaixo.
+% Argumentos: [largura], rótulo, título, arquivo e fonte.
+% Exemplo: \inserirfigura[0.45\textwidth]{fig:prot}{Protótipo}{imagens/a.png}{Elaboração própria (2026).}
+\newcommand{\inserirfigura}[5][0.65\textwidth]{%
+  \begin{figure}[H]
+    \centering
+    \caption{\label{#2}#3}
+    \includegraphics[width=#1]{#4}
+    \par\vspace{0.15cm}
+    {\fontsize{11}{13}\selectfont Fonte: #5\par}
+  \end{figure}
+}

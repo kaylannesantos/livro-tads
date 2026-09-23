@@ -1,0 +1,78 @@
+% ESTRUTURA DO LIVRO
+% ==================
+% Público: equipe de diagramação. Este módulo controla páginas institucionais
+% e a abertura visual dos capítulos. Autores recebem apenas artigo_modelo/.
+
+% Use para ficha técnica, agradecimentos, prefácio e organizadores enquanto o
+% conteúdo final não foi entregue. Não elimine essas chamadas de livro.tex: a
+% ordem é exigida pelas diretivas; troque o marcador pelo conteúdo definitivo.
+\newcommand{\folhareservada}[1]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \vspace*{\fill}
+  \begin{center}\textbf{#1}\\[1cm]\textit{[Conteúdo editorial pendente]}\end{center}
+  \vspace*{\fill}
+  \clearpage
+}
+
+% A contracapa deve usar a marca IFPI. A equipe de diagramação pode substituir
+% este layout inteiro, desde que preserve a marca e a posição no livro.tex.
+\newcommand{\contracapareservada}{%
+  \clearpage
+  \thispagestyle{empty}%
+  \centering
+  \marcaifpi
+  \vfill
+  \textit{[Conteúdo editorial da contracapa pendente]}
+  \vfill
+  \clearpage
+}
+
+% Capa e folha de rosto usam os valores de identidade.tex. Se houver arte final
+% fornecida pela diagramação, edite estas macros; livro.tex não precisa mudar.
+\newcommand{\capalivro}{%
+  \begin{titlepage}
+    \centering
+    \marcaifpi\\[2cm]
+    \vspace*{5cm}
+    {\fontsize{24}{28}\selectfont\color{sommagreen}\textbf{\TituloLivro}}\\[1cm]
+    {\Large \SubtituloLivro}\\[3cm]
+    {\large Organização: \OrganizadoresLivro}
+    \vfill
+    {\large \LocalLivro\\ \the\year}
+  \end{titlepage}
+}
+\newcommand{\folhaderosto}{%
+  \begin{titlepage}
+    \centering
+    \marcaifpi\\[2cm]
+    \vspace*{4cm}
+    {\fontsize{20}{24}\selectfont\color{sommagreen}\textbf{\TituloLivro}}\\[1cm]
+    {\Large \SubtituloLivro}\\[2cm]
+    {\large Organização: \OrganizadoresLivro}\\
+    \vfill
+    {\large \LocalLivro\\ \the\year}
+  \end{titlepage}
+}
+
+% Argumentos: título, subtítulo, autores/filiações/contatos, resumo e autores
+% (somente nomes) para a linha auxiliar no sumário. O título integral da
+% abertura é também o título usado no sumário.
+\newcommand{\capitulocapa}[5]{%
+  \cleardoublepage
+  \refstepcounter{chapter}%
+  \setcounter{section}{0}%
+  \setcounter{table}{0}%
+  \setcounter{figure}{0}%
+  \registracapitulonosumario{\thechapter}{#1}{#5}%
+  \definircabecalhoartigo{#1}{#2}%
+  \thispagestyle{fancy}%
+  \minicabecalhoartigo{\thechapter}%
+  \begin{center}
+    {\fontsize{14}{16}\selectfont\color{sommagreen}\textbf{#1}\\ #2}\\[0.8cm]
+    {\fontsize{12}{14}\selectfont\textbf{#3}}\\[0.7cm]
+    \begin{minipage}{0.88\textwidth}\small #4\end{minipage}
+  \end{center}
+  \vspace{0.6cm}
+  \clearpage
+}

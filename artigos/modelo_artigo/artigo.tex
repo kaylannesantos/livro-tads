@@ -1,0 +1,92 @@
+% TEXTO DO ARTIGO
+% ================
+% Autores: escrevam o conteúdo nas seções abaixo e mantenham a ordem. A abertura
+% é criada a partir de metadados.tex; não repita título, autores ou resumo aqui.
+\input{metadados}
+\aberturaartigo
+
+\section{Introdução}
+% APAGUE este texto demonstrativo e escreva o seu manuscrito nesta estrutura.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, tortor
+eget tincidunt posuere, lectus lacus luctus nisl, eget feugiat eros ipsum id
+ligula. Donec dignissim sem sed nisl tincidunt, in faucibus purus faucibus.
+Este parágrafo apenas mostra o recuo, a fonte e o espaçamento aplicados ao
+corpo do artigo.
+
+O objetivo deste exemplo é apresentar o fluxo editorial de um manuscrito e a
+posição das figuras perto de sua primeira menção. Como demonstra a
+Figura~\ref{fig:cpu}, a imagem deve ter título acima, identificação numérica e
+fonte abaixo. A referência bibliográfica também é inserida no texto, como em
+\parencite{exemplo2026}.
+
+\inserirfigura[0.36\textwidth]
+  {fig:cpu}
+  {Ícone ilustrativo de processamento}
+  {imagens/imagem_01.png}
+  {Elaboração própria para o modelo (2026).}
+
+\section{Fundamentação teórica}
+% Desenvolva conceitos e trabalhos que sustentam a pesquisa.
+Integer at tortor vel leo congue pretium. Vestibulum ante ipsum primis in
+faucibus orci luctus et ultrices posuere cubilia curae; praesent eget nibh
+consequat, ullamcorper quam sit amet, volutpat lectus. Mauris finibus ligula
+nec metus blandit, vitae aliquet libero malesuada.
+
+Nunc varius luctus sapien, quis pretium odio congue eget. Curabitur tempus
+convallis dolor, at eleifend neque. Pellentesque habitant morbi tristique
+senectus et netus et malesuada fames ac turpis egestas. A discussão deve
+relacionar as ideias mobilizadas ao problema investigado.
+
+\section{Material e métodos}
+% Descreva desenho, dados, ferramentas, procedimentos e recorte do estudo.
+Suspendisse sodales dictum lorem, in volutpat massa faucibus non. Nulla
+facilisi. Aenean vitae sem sed augue semper vulputate. Proin interdum elit
+quis turpis dapibus, a volutpat lectus fermentum. Registre aqui apenas os
+procedimentos realmente adotados, de modo que possam ser compreendidos e
+verificados.
+
+Uma segunda imagem ilustra que cada figura recebe numeração sequencial dentro
+do artigo. A Figura~\ref{fig:controle} usa outro arquivo existente na pasta
+`imagens/` do modelo.
+
+\inserirfigura[0.42\textwidth]
+  {fig:controle}
+  {Ícone ilustrativo de controle embarcado}
+  {imagens/imagem_02.png}
+  {Elaboração própria para o modelo (2026).}
+
+\section{Resultados e discussão}
+% Apresente resultados verificáveis e discuta-os à luz da literatura.
+Praesent rhoncus mauris id augue facilisis, eu fermentum ligula porttitor.
+Aliquam erat volutpat. Sed feugiat lacus eu orci consequat, vitae suscipit
+ipsum feugiat. Quisque feugiat neque sit amet purus tempus, eget fermentum
+urna congue. Em um artigo real, substitua este trecho por resultados
+verificáveis e pela discussão relacionada à literatura.
+
+Vivamus porttitor dui a sem efficitur, sed volutpat augue pretium. Nam rutrum
+mi in sapien porttitor, sed sollicitudin nibh tempor. Donec sit amet semper
+erat. Etiam maximus risus eu mauris facilisis, a porttitor ligula lacinia.
+
+\section{Considerações finais}
+% Responda ao objetivo sem introduzir resultados novos.
+Donec commodo, turpis at tincidunt luctus, lacus libero euismod justo, nec
+efficitur erat sapien ut est. Esta conclusão demonstra somente a posição da
+seção final; em um manuscrito submetido, ela deve responder ao objetivo sem
+introduzir resultados novos.
+
+\section*{Contribuição dos autores}
+% Substitua por papéis CRediT reais de cada autor.
+Autora de Exemplo: conceituação, redação e visualização. Coautor de Exemplo:
+revisão e supervisão.
+
+\section*{Conflito de interesses}
+Os autores declaram não haver conflito de interesses.
+
+\section*{Aprovação ética}
+Não se aplica.
+
+\referenciasartigo
+% Garante que a última página do artigo seja composta ainda com o cabeçalho
+% corrente antes de a inclusão desta pasta terminar. Não remova esta linha.
+\thispagestyle{fancy}
+\clearpage

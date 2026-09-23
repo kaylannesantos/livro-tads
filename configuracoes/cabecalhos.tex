@@ -1,0 +1,64 @@
+% CABEÇALHOS E MINI-CABEÇALHOS
+% ============================
+% Público: equipe de diagramação. Este módulo concentra toda a composição que
+% antes era repetida dentro de \capitulocapa.
+%
+% A hierarquia visual segue cabecalho.tex da versão de referência: cabeçalho
+% dinâmico na margem superior + mini-cabeçalho com duas colunas + linha verde
+% no início de cada artigo. Os metadados próprios da revista Somma foram
+% deliberadamente excluídos, conforme as diretivas do livro.
+
+% O cabeçalho corrente pode ocupar duas linhas quando o título/subtítulo são longos.
+\setlength{\headheight}{40pt}
+\newcommand{\reguacabalhocolorida}{%
+  \renewcommand{\headrulewidth}{0.5pt}%
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{sommagreen}\leaders\hrule height \headrulewidth\hfill}}%
+}
+
+% Cabeçalho para capa interna, sumário e elementos sem artigo ativo.
+\newcommand{\definircabecalholivro}{%
+  \fancyhf{}%
+  \fancyhead[L]{\footnotesize\color{sommagreen}\textbf{\NomeLivroCabecalho} -- \DescricaoLivroCabecalho}%
+  \fancyhead[R]{\footnotesize\color{sommagreen}\InstituicaoCabecalho}%
+  \fancyfoot[C]{\thepage}%
+  \reguacabalhocolorida
+  \pagestyle{fancy}%
+}
+
+% Cabeçalho corrente de um artigo. É chamado automaticamente por \capitulocapa;
+% autores não precisam nem devem usá-lo. Para remover o subtítulo do cabeçalho,
+% altere esta macro, não os arquivos individuais dos artigos.
+\newcommand{\definircabecalhoartigo}[2]{%
+  \fancyhf{}%
+  \fancyhead[C]{\fontsize{11}{13}\selectfont\color{sommagreen}\textbf{\NomeLivroCabecalho} \textbar\ \MakeUppercase{#1}: #2}%
+  \fancyfoot[C]{\thepage}%
+  \reguacabalhocolorida
+  \pagestyle{fancy}%
+}
+
+% Mini-cabeçalho que abre visualmente cada artigo. A largura 60/40, a linha e
+% os espaços seguem o modelo de referência, mas os textos vêm de identidade.tex.
+\newcommand{\minicabecalhoartigo}[1]{%
+  \noindent
+  \begin{minipage}[b]{0.6\textwidth}
+    {\large\color{sommagreen}\textbf{\NomeLivroCabecalho} -- \DescricaoLivroCabecalho}\\[0.1cm]
+    {\color{sommagreen}\InstituicaoCabecalho}
+  \end{minipage}%
+  \begin{minipage}[b]{0.4\textwidth}
+    \raggedleft\color{sommagreen}\textbf{\RotuloCapitulo{#1}}
+  \end{minipage}
+  \par\vspace{0.2cm}
+  \noindent\textcolor{sommagreen}{\rule{\textwidth}{0.8pt}}
+  \vspace{0.8cm}
+}
+
+% O estilo `plain` é a opção de página sem cabeçalho: preserva somente o número
+% no rodapé. Use `\thispagestyle{plain}` em uma página pontual ou `\pagestyle{plain}`
+% para as próximas páginas. Para remover cabeçalho E número, use `empty`.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+\definircabecalholivro

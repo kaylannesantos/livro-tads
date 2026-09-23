@@ -1,0 +1,36 @@
+% SUMÁRIO
+
+% Exibe capítulos/artigos, sem listar as seções internas.
+\setcounter{tocdepth}{0}
+
+% Registra o título integral do artigo e, logo abaixo, seus autores.
+\newcommand{\registracapitulonosumario}[3]{%
+  \addcontentsline{toc}{chapter}{\protect\textbf{Capítulo #1:} #2}%
+  \addtocontents{toc}{\protect\contentsline{sumarioautores}{#3}{}{}}%
+}
+\makeatletter
+
+% Título com pontilhado e número da página, no estilo da referência enviada.
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum\c@tocdepth>\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.65em plus 0.2em
+    \begingroup
+      \normalfont\fontsize{12}{14}\selectfont
+      \@dottedtocline{0}{0pt}{0pt}{#1}{#2}%
+    \endgroup
+  \fi
+}
+
+% Linha auxiliar de autoria: recuada sob o título, sem novo número de página.
+\newcommand*{\l@sumarioautores}[2]{%
+  \begingroup
+    \par\vspace{0.25em}%
+    \leftskip=1.5em
+    \rightskip=0pt
+    \parindent=0pt
+    {\fontsize{10}{12}\selectfont\color{black}#1\par}%
+    \vspace{0.45em}%
+  \endgroup
+}
+\makeatother

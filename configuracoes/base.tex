@@ -1,0 +1,96 @@
+% REGRAS TÉCNICAS DO LIVRO
+% =======================
+% Público: equipe de diagramação. Autores não devem alterar este arquivo.
+%
+% Requisitos aplicados de diretivas_livro/submissao_regras.html:
+% - A4; margens 3 cm (superior/esquerda) e 2 cm (inferior/direita);
+% - Arial Narrow 12; espaçamento simples;
+% - citações diretas longas em 11 pt com recuo de 4 cm;
+% - referências e corpo de texto em 12 pt.
+
+% fontspec requer XeLaTeX ou LuaLaTeX. O Makefile usa XeLaTeX.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Os arquivos licenciados acompanham este projeto em assets/fonts. Não renomeie
+% os arquivos sem atualizar os quatro nomes abaixo. O caminho é relativo à raiz
+% do livro, que é também o diretório em que `make pdf` executa a compilação.
+\setmainfont{Arial Narrow}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=arialnarrow,
+  BoldFont=arialnarrow_bold,
+  ItalicFont=arialnarrow_italic,
+  BoldItalicFont=arialnarrow_bolditalic
+]
+\setsansfont{Arial Narrow}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=arialnarrow,
+  BoldFont=arialnarrow_bold,
+  ItalicFont=arialnarrow_italic,
+  BoldItalicFont=arialnarrow_bolditalic
+]
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[portuguese]{babel}
+% Margens do projeto no Overleaf: topo 3,5 cm e 2,5 cm nos demais lados.
+% As margens são simétricas; twoside/openright só controla a paginação.
+\usepackage[margin=2.5cm,top=3.5cm]{geometry}
+\usepackage{setspace}
+\singlespacing
+\usepackage{graphicx}
+% Mesmo fluxo adotado no template_tcc_monografia: figure[H] mantém a ilustração
+% junto do trecho que a apresenta, e caption fornece numeração/referência.
+\usepackage{float}
+\usepackage{caption}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% Cores institucionais. A equipe de diagramação pode alterar os valores RGB,
+% mas deve manter o nome `sommagreen`, usado pelos módulos de cabeçalho e título.
+\usepackage{xcolor}
+\definecolor{sommagreen}{RGB}{46,117,56}
+\usepackage{tcolorbox}
+
+% Pacotes de estrutura e referências. Mantenha biblatex-abnt, pois ele trata
+% o formato bibliográfico; autores só editam os respectivos arquivos refs.bib.
+\usepackage{fancyhdr}
+% Mantém vazias as páginas pares inseridas por openright/cleardoublepage.
+\usepackage{emptypage}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{csquotes}
+\usepackage[style=abnt,backend=biber]{biblatex}
+\defbibheading{nossabibliografia}{}
+
+% Cada artigo reinicia o contador de figuras ao abrir seu capítulo. Exiba apenas
+% algarismos arábicos (Figura 1, Figura 2), como indicado nas diretrizes.
+\renewcommand{\thefigure}{\arabic{figure}}
+\DeclareCaptionFont{arialnarrowonze}{\fontsize{11}{13}\selectfont}
+\DeclareCaptionLabelFormat{livrofigura}{#1 #2}
+\captionsetup[figure]{%
+  position=top,
+  font=arialnarrowonze,
+  labelfont=bf,
+  labelformat=livrofigura,
+  labelsep=colon,
+  justification=centering,
+  singlelinecheck=false
+}
+
+% Seções do corpo do artigo: numeradas, alinhadas à esquerda e em verde,
+% conforme o modelo Somma. Não centralizar títulos de seção.
+\renewcommand{\thesection}{\arabic{section}}
+\titleformat{\section}{\fontsize{12}{14}\bfseries\color{sommagreen}\uppercase}{\thesection}{1em}{}
+\titleformat{\subsection}{\fontsize{12}{14}\bfseries\color{black}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\fontsize{12}{14}\itshape\color{black}}{\thesubsubsection}{1em}{}
+
+% Uso pelos autores para citações diretas com mais de três linhas. A chamada
+% introdutória deve informar a página da obra citada, conforme NBR 10520:2023.
+\newenvironment{citacaolonga}{%
+  \begin{list}{}{\setlength{\leftmargin}{4cm}\setlength{\rightmargin}{0pt}}%
+  \item\relax\fontsize{11}{13}\selectfont\singlespacing
+}{%
+  \end{list}
+}

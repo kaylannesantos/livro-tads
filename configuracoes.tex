@@ -1,41 +1,13 @@
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[portuguese]{babel}
-\usepackage[margin=2.5cm, top=3.5cm]{geometry}
-\usepackage{setspace}
-\usepackage{graphicx} % Pacote para imagens
-\usepackage{indentfirst}
-
-% Fonte sem serifa
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-
-% Cores e Caixas
-\usepackage{xcolor} % Pacote para cores
-\usepackage{tcolorbox}
-\definecolor{sommagreen}{RGB}{46, 117, 56}
-
-% Cabeçalho Global do Livro
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\headrule}{\hbox to\headwidth{\color{sommagreen}\leaders\hrule height \headrulewidth\hfill}}
-\fancyhead[L]{
-    \textcolor{sommagreen}{\textbf{\Large + Somma}} \textcolor{sommagreen}{- Coletânea de Artigos}\\
-    \textcolor{sommagreen}{Instituto Federal do Piauí}
-}
-\fancyhead[R]{\footnotesize ISSN: XXXX-XXXX\\\textcolor{sommagreen}{\textbf{[Capítulo]}}}
-
-% Formatação dos Títulos 
-\usepackage{titlesec}
-\renewcommand{\thesection}{\arabic{section}}
-\titleformat{\section}{\fontsize{12}{14}\bfseries\color{sommagreen}\uppercase}{\thesection}{1em}{}
-\titleformat{\subsection}{\fontsize{12}{14}\bfseries\color{black}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\fontsize{12}{14}\itshape\color{black}}{\thesubsubsection}{1em}{}
-\setlength{\parindent}{1.25cm}
-
-% --- PACOTES PARA MODULARIDADE E REFERÊNCIAS ---
-\usepackage{import}
-\usepackage[style=abnt, backend=biber]{biblatex}
-\defbibheading{nossabibliografia}{}
+% PONTO DE ENTRADA DAS CONFIGURAÇÕES
+% -----------------------------------
+% Este arquivo deve permanecer pequeno. Ele apenas carrega os módulos abaixo,
+% para que a equipe de diagramação possa alterar cada aspecto sem procurar
+% definições dentro de livro.tex ou dos artigos.
+%
+% Consulte configuracoes/README.md antes de alterar qualquer módulo.
+\input{configuracoes/base}
+\input{configuracoes/identidade}
+\input{configuracoes/cabecalhos}
+\input{configuracoes/estrutura_livro}
+\input{configuracoes/sumario}
+\input{configuracoes/modelo_artigo}

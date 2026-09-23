@@ -1,0 +1,15 @@
+% PRÉVIA ISOLADA DO MODELO
+% ========================
+% Uso pela equipe de diagramação: execute `make modelo` na raiz do livro.
+% Esta prévia não inclui capa, sumário ou outros artigos; ela torna rápida a
+% conferência do minicabeçalho, das figuras e das referências do modelo.
+\documentclass[12pt,a4paper,oneside]{book}
+\input{configuracoes}
+\addbibresource[glob=true]{artigos/*/refs.bib}
+
+\begin{document}
+\mainmatter
+\begin{refsection}
+  \import{artigos/modelo_artigo/}{artigo.tex}
+\end{refsection}
+\end{document}
