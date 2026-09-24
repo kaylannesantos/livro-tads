@@ -1,44 +1,36 @@
-\documentclass[12pt,a4paper,oneside]{book}
+% Cada capítulo começa em página ímpar, conforme as diretivas editoriais.
+\documentclass[12pt,a4paper,twoside,openright]{book}
 
-% Carrega as configurações (garanta que configuracoes.tex está na mesma pasta)
+% Carrega os módulos de diagramação. Não coloque estilos ou cabeçalhos aqui;
+% consulte configuracoes/README.md para saber o arquivo responsável por cada um.
 \input{configuracoes}
 
-% Registre os arquivos .bib.
-\addbibresource[glob=true]{artigos/*/refs.bib}
+% Nesta compilação, somente o modelo de artigo é incluído.
+\addbibresource{artigos/modelo_artigo/refs.bib}
 
 \begin{document}
 
 \frontmatter
 
-\begin{titlepage}
-    \centering
-    \vspace*{5cm}
-    {\fontsize{24}{28}\selectfont\color{sommagreen}\textbf{TÍTULO DO LIVRO}} \\[1cm]
-    {\Large Subtítulo do Livro ou Edição} \\[3cm]
-    {\large Organização: Nome do Organizador} 
-    
-    \vfill % Correção aplicada aqui
-    
-    {\large Teresina, Brasil \\ \the\year}
-\end{titlepage}
+\capalivro
+\folhaderosto
+% Páginas reservadas previstas na estrutura editorial; preencher antes da edição final.
+\folhareservada{Folha de rosto — verso e ficha técnica}
+\folhareservada{Agradecimentos}
+\folhareservada{Prefácio}
 
+\renewcommand{\contentsname}{Sumário}
 \tableofcontents
 
 \mainmatter
 
-% --- INSERÇÃO DO ARTIGO 01 ---
+% INCLUSÃO DOS ARTIGOS
 \begin{refsection}
-    \import{artigos/artigo_01/}{artigo.tex}
+    \import{artigos/modelo_artigo/}{artigo.tex}
 \end{refsection}
 
-% --- INSERÇÃO DO ARTIGO 02 (Comentado até o arquivo existir) ---
-\begin{refsection}
-    \import{artigos/artigo_02/}{artigo.tex}
-\end{refsection}
-
-% --- INSERÇÃO DO ARTIGO 03 (Comentado até o arquivo existir) ---
-\begin{refsection}
-    \import{artigos/artigo_03/}{artigo.tex}
-\end{refsection}
+\backmatter
+\folhareservada{Organizadores}
+\contracapareservada
 
 \end{document}
