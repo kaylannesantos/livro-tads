@@ -30,15 +30,16 @@
 }
 
 % Figura no padrão já usado pelo template_tcc_monografia: ambiente figure[H],
-% legenda acima, label para referência, imagem centralizada e fonte abaixo.
+% identificação Figura N – Título, label para referência, imagem centralizada
+% e fonte abaixo via \legend.
 % Argumentos: [largura], rótulo, título, arquivo e fonte.
 % Exemplo: \inserirfigura[0.45\textwidth]{fig:prot}{Protótipo}{imagens/a.png}{Elaboração própria (2026).}
 \newcommand{\inserirfigura}[5][0.65\textwidth]{%
   \begin{figure}[H]
-    \centering
     \caption{\label{#2}#3}
-    \includegraphics[width=#1]{#4}
-    \par\vspace{0.15cm}
-    {\fontsize{11}{13}\selectfont Fonte: #5\par}
+    \begin{center}
+      \includegraphics[width=#1]{#4}
+    \end{center}
+    \legend{Fonte: #5}
   \end{figure}
 }

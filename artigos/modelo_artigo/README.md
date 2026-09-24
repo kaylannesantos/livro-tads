@@ -19,10 +19,16 @@ cp -R artigos/modelo_artigo artigos/artigo_04
 O modelo é exclusivo para a categoria **Artigo**. Revisões temáticas, relatos
 de experiência e notas têm estruturas diferentes nas diretrizes.
 
-O texto atual é um *lorem ipsum* de demonstração, com dados de autoria
-fictícios e duas imagens locais. Apague-o integralmente ao criar um artigo
-novo. Para a equipe de diagramação, `make modelo` gera uma prévia isolada em
+O texto atual é um artigo demonstrativo sobre jogos digitais, CPU e controle,
+com dados de autoria e uma referência fictícios, duas imagens locais e uma
+tabela. Substitua o conteúdo de exemplo ao criar um artigo novo. Para a equipe
+de diagramação, `make modelo` gera uma prévia isolada em
 `build/modelo/preview.pdf`.
+
+O exemplo segue a nomenclatura do template TCC/Monografia: identificação com
+número arábico e travessão acima da ilustração ou tabela, rótulo para citação e
+fonte abaixo. A macro `\inserirfigura` aplica esse padrão às figuras; tabelas
+usam `\caption`, `\label` e `\legend` no ambiente `table`.
 
 Antes de enviar, confira: resumo/abstract com no máximo 250 palavras; até cinco
 palavras-chave sem repetir o título; e-mail e ORCID de cada autor; resultados

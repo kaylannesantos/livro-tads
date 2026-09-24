@@ -7,72 +7,82 @@
 
 \section{Introdução}
 % APAGUE este texto demonstrativo e escreva o seu manuscrito nesta estrutura.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, tortor
-eget tincidunt posuere, lectus lacus luctus nisl, eget feugiat eros ipsum id
-ligula. Donec dignissim sem sed nisl tincidunt, in faucibus purus faucibus.
-Este parágrafo apenas mostra o recuo, a fonte e o espaçamento aplicados ao
-corpo do artigo.
+Jogos digitais combinam programas, dispositivos de processamento e formas de
+interação. Enquanto a partida acontece, o sistema recebe comandos do jogador,
+atualiza o estado do jogo e apresenta respostas na tela e nos alto-falantes.
+Este exemplo aborda, de maneira introdutória, dois componentes relacionados a
+esse ciclo: a unidade central de processamento (CPU) e o controle de jogo.
 
-O objetivo deste exemplo é apresentar o fluxo editorial de um manuscrito e a
-posição das figuras perto de sua primeira menção. Como demonstra a
-Figura~\ref{fig:cpu}, a imagem deve ter título acima, identificação numérica e
-fonte abaixo. A referência bibliográfica também é inserida no texto, como em
-\parencite{exemplo2026}.
+A Figura~\ref{fig:cpu} representa a CPU como componente de processamento. Em
+um jogo, o processador executa partes da lógica e coordena tarefas do sistema;
+as funções exatas variam conforme o jogo e a plataforma. A citação
+\parencite{exemplo2026} é fictícia e serve somente para demonstrar a chamada
+bibliográfica no texto.
 
 \inserirfigura[0.36\textwidth]
   {fig:cpu}
-  {Ícone ilustrativo de processamento}
+  {CPU como componente de processamento de um jogo digital}
   {imagens/imagem_01.png}
-  {Elaboração própria para o modelo (2026).}
+  {Imagem ilustrativa do modelo (2026).}
 
 \section{Fundamentação teórica}
 % Desenvolva conceitos e trabalhos que sustentam a pesquisa.
-Integer at tortor vel leo congue pretium. Vestibulum ante ipsum primis in
-faucibus orci luctus et ultrices posuere cubilia curae; praesent eget nibh
-consequat, ullamcorper quam sit amet, volutpat lectus. Mauris finibus ligula
-nec metus blandit, vitae aliquet libero malesuada.
+O processamento de um jogo envolve tarefas como interpretar regras,
+atualizar personagens e coordenar a comunicação com os demais componentes.
+Em computadores e consoles, essas responsabilidades são distribuídas entre
+unidades e subsistemas diferentes. Por isso, a imagem da CPU é uma ilustração
+conceitual, não um diagrama da arquitetura de um equipamento específico.
 
-Nunc varius luctus sapien, quis pretium odio congue eget. Curabitur tempus
-convallis dolor, at eleifend neque. Pellentesque habitant morbi tristique
-senectus et netus et malesuada fames ac turpis egestas. A discussão deve
-relacionar as ideias mobilizadas ao problema investigado.
+O controle, por sua vez, transforma ações físicas — como pressionar um botão
+ou mover um analógico — em sinais que o jogo pode interpretar. A Tabela~\ref{tab:elementos-modelo}
+resume esses papéis no ciclo básico de interação.
+
+\begin{table}[H]
+  \centering
+  \caption{\label{tab:elementos-modelo}Componentes do ciclo de interação em um jogo digital}
+  \begin{tabular}{p{0.30\textwidth} p{0.64\textwidth}}
+    \toprule
+    \textbf{Componente} & \textbf{Papel ilustrativo} \\
+    \midrule
+    Controle & Registra os comandos enviados pelo jogador. \\
+    CPU & Processa partes da lógica e coordena tarefas do jogo. \\
+    Software do jogo & Interpreta os comandos e atualiza o estado da partida. \\
+    \bottomrule
+  \end{tabular}
+  \legend{Fonte: Síntese demonstrativa elaborada para o modelo (2026).}
+\end{table}
 
 \section{Material e métodos}
 % Descreva desenho, dados, ferramentas, procedimentos e recorte do estudo.
-Suspendisse sodales dictum lorem, in volutpat massa faucibus non. Nulla
-facilisi. Aenean vitae sem sed augue semper vulputate. Proin interdum elit
-quis turpis dapibus, a volutpat lectus fermentum. Registre aqui apenas os
-procedimentos realmente adotados, de modo que possam ser compreendidos e
-verificados.
+Este texto é uma demonstração editorial, não um estudo experimental. Para
+montá-lo, foram observados os dois ícones incluídos na pasta de imagens e
+organizadas suas funções em uma tabela conceitual. Nenhum jogo, console ou
+controle foi testado, e não foram coletados dados de desempenho ou de uso.
 
-Uma segunda imagem ilustra que cada figura recebe numeração sequencial dentro
-do artigo. A Figura~\ref{fig:controle} usa outro arquivo existente na pasta
-`imagens/` do modelo.
+A Figura~\ref{fig:controle} ilustra um controle acompanhado por um circuito
+eletrônico. Ela ajuda a mostrar como uma figura pode ser mencionada no texto,
+receber título e fonte e permanecer próxima ao trecho relacionado.
 
 \inserirfigura[0.42\textwidth]
   {fig:controle}
-  {Ícone ilustrativo de controle embarcado}
+  {Controle de jogo e circuito eletrônico ilustrativos}
   {imagens/imagem_02.png}
-  {Elaboração própria para o modelo (2026).}
+  {Imagem ilustrativa do modelo (2026).}
 
 \section{Resultados e discussão}
 % Apresente resultados verificáveis e discuta-os à luz da literatura.
-Praesent rhoncus mauris id augue facilisis, eu fermentum ligula porttitor.
-Aliquam erat volutpat. Sed feugiat lacus eu orci consequat, vitae suscipit
-ipsum feugiat. Quisque feugiat neque sit amet purus tempus, eget fermentum
-urna congue. Em um artigo real, substitua este trecho por resultados
-verificáveis e pela discussão relacionada à literatura.
-
-Vivamus porttitor dui a sem efficitur, sed volutpat augue pretium. Nam rutrum
-mi in sapien porttitor, sed sollicitudin nibh tempor. Donec sit amet semper
-erat. Etiam maximus risus eu mauris facilisis, a porttitor ligula lacinia.
+As imagens e a tabela destacam um fluxo geral: o jogador envia uma entrada pelo
+controle, o software interpreta o comando e o sistema atualiza a partida. A
+CPU participa do processamento, embora o trabalho real seja compartilhado com
+outros componentes. Como o exemplo usa somente ícones, ele não permite comparar
+desempenho, medir latência ou avaliar a experiência de jogadores.
 
 \section{Considerações finais}
 % Responda ao objetivo sem introduzir resultados novos.
-Donec commodo, turpis at tincidunt luctus, lacus libero euismod justo, nec
-efficitur erat sapien ut est. Esta conclusão demonstra somente a posição da
-seção final; em um manuscrito submetido, ela deve responder ao objetivo sem
-introduzir resultados novos.
+O exemplo mostra como apresentar CPU e controle como partes do ciclo de
+interação em jogos digitais. As figuras ilustram os componentes e a tabela
+resume seus papéis. O conteúdo é apenas demonstrativo: um artigo de pesquisa
+deve substituir essas descrições por fontes, métodos e resultados próprios.
 
 \section*{Contribuição dos autores}
 % Substitua por papéis CRediT reais de cada autor.

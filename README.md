@@ -1,125 +1,173 @@
 # livro-tads
 
-## Compilação local
+Projeto LaTeX para diagramar uma coletânea de artigos do curso de TADS do
+Instituto Federal do Piauí (IFPI).
 
-A compilação local usa Docker e a imagem completa do TeX Live. Isso mantém as
-dependências do livro (incluindo `biber` e `biblatex-abnt`) fora do sistema
-operacional e torna o resultado reproduzível entre máquinas.
+## Estado atual
 
-Pré-requisito: Docker em execução e acessível ao usuário atual. Confirme com:
+O projeto já tem a estrutura editorial do livro, configurações separadas para a
+equipe de diagramação e um modelo de artigo com metadados, referências, figuras
+e texto de demonstração. No momento, `livro.tex` inclui somente
+`artigos/modelo_artigo/`; essa pasta contém um artigo demonstrativo sobre jogos
+digitais, imagens ilustrativas e dados fictícios. Ela demonstra o layout e não
+deve ser publicada como artigo real.
 
-```bash
+Os dados de título, subtítulo e organização da capa e as páginas reservadas
+para conteúdo editorial continuam como campos ou marcadores a preencher. A
+marca IFPI usada no TCC está em `assets/marca-ifpi.pdf` e já aparece na capa,
+folha de rosto e contracapa. Antes da edição final, substitua os campos e
+integre os artigos aprovados.
+
+## Estrutura do projeto
+
+- `livro.tex`: documento principal; define a ordem das páginas e inclui os
+  artigos.
+- `configuracoes/`: fonte, margens, identidade, cabeçalhos, estrutura e sumário.
+  Consulte [configuracoes/README.md](configuracoes/README.md) antes de alterar o
+  layout.
+- `artigos/modelo_artigo/`: modelo destinado aos autores, com instruções em
+  `README.md` e imagens de exemplo em `imagens/`.
+- `assets/fonts/`: arquivos Arial Narrow usados na compilação.
+- `assets/marca-ifpi.pdf`: marca vetorial IFPI usada nas páginas institucionais.
+- `scripts/`: ferramentas para empacotar o projeto para Overleaf e publicar um
+  commit no projeto Overleaf existente.
+
+## Compilação
+
+A compilação local usa Docker e a imagem completa do TeX Live, que fornece
+XeLaTeX, Biber e biblatex-abnt. Requer Docker em execução e acessível ao
+usuário atual; pode-se conferir com:
+
+~~~bash
 docker run --rm hello-world
-```
+~~~
 
-Na primeira compilação a imagem do TeX Live será baixada. A partir da raiz
-deste repositório, execute:
+Execute os comandos abaixo na raiz do repositório:
 
-```bash
-make pdf
-```
+~~~bash
+make pdf      # compila o livro em build/livro.pdf
+make modelo   # compila só o modelo em build/modelo/preview.pdf
+make watch    # recompila livro.tex ao salvar arquivos TeX ou BibTeX
+make clean    # limpa artefatos de compilação de livro.tex
+~~~
 
-O PDF estará em `build/livro.pdf`. Para manter a compilação ativa enquanto
-edita os arquivos `.tex` e `.bib`, use `make watch` e encerre com `Ctrl+C`.
-Para apagar apenas os arquivos gerados localmente, use `make clean`.
+Encerre `make watch` com `Ctrl+C`. `make image` baixa ou atualiza a imagem do
+TeX Live. A imagem padrão usa a versão mais recente; para fixar outra versão sem
+editar o projeto, informe-a no comando:
 
-## Fonte do livro
-
-O `make pdf` usa XeLaTeX e carrega diretamente a família **Arial Narrow**
-versionada em `assets/fonts/`; não é necessário instalar a fonte no sistema ou
-no container. Mantenha juntos os quatro arquivos (`regular`, `bold`, `italic`
-e `bold italic`) para preservar a aparência do PDF. Antes de publicar o
-repositório, confirme que a licença adquirida permite redistribuir esses
-arquivos de fonte.
-
-## Diagramação e modelo para autores
-
-As decisões de identidade, cabeçalhos, tipografia e estrutura estão separadas
-em [configuracoes/README.md](configuracoes/README.md). Autores devem receber e
-copiar apenas [artigos/modelo_artigo/](artigos/modelo_artigo/): nele, os
-comentários indicam exatamente quais metadados e seções precisam preencher,
-sem permitir que alterem o layout global do livro.
-
-Por padrão o projeto usa a imagem mais recente do TeX Live. Para testar ou
-fixar uma versão sem editar os arquivos do projeto, informe a imagem no
-comando:
-
-```bash
+~~~bash
 make pdf TEXLIVE_IMAGE=ghcr.io/xu-cheng/texlive-full:20250701
-```
+~~~
 
-Os diretórios `build/` e `dist/` não entram no Git. Portanto o fluxo diário é:
-editar, conferir com `make pdf`, revisar `build/livro.pdf`, e então versionar
-somente as alterações de fonte com `git add` e `git commit`.
+O XeLaTeX carrega Arial Narrow dos quatro arquivos versionados em
+`assets/fonts/`; não é necessário instalar a família dentro do sistema ou do
+container. Preserve esses arquivos e confirme que a licença permite distribuí-los
+ao compartilhar o repositório.
+
+## Fluxo dos artigos
+
+Autores devem trabalhar numa cópia de `artigos/modelo_artigo/`. Substituam o
+artigo demonstrativo sobre jogos e os dados fictícios em `metadados.tex`,
+`artigo.tex` e `refs.bib`; mantenham em `refs.bib` apenas obras citadas e
+coloquem as figuras em `imagens/`. As instruções e a sequência editorial estão em
+[artigos/modelo_artigo/README.md](artigos/modelo_artigo/README.md).
+
+As figuras devem ser citadas no texto e inseridas próximas à primeira menção.
+Use `\inserirfigura` para obter legenda acima, centralização, referência por
+rótulo e fonte abaixo, no fluxo adotado pelo template TCC/Monografia. Exemplo:
+
+~~~tex
+Como mostra a Figura~\ref{fig:arquitetura}, ...
+
+\inserirfigura[0.7\textwidth]
+  {fig:arquitetura}
+  {Arquitetura proposta para o sistema}
+  {imagens/arquitetura.jpg}
+  {Elaboração própria (2026).}
+~~~
+
+As configurações do livro formatam as identificações como “Figura 1 – …” e
+“Tabela 1 – …” em Arial Narrow 11, com fonte abaixo. Consulte
+`artigos/modelo_artigo/imagens/README.md` e as diretivas editoriais para
+formatos, resolução, identificação e fonte das imagens.
+
+No estado atual, `livro.tex` registra explicitamente apenas o arquivo de
+referências do modelo. Ao integrar artigos reais, registre também os arquivos
+`refs.bib` no preâmbulo. Para manter a descoberta automática de todos os
+arquivos dentro de `artigos/`, pode-se usar a forma glob abaixo, já usada na
+prévia do modelo. Importe cada artigo dentro de uma seção de referências
+independente:
+
+~~~tex
+\addbibresource[glob=true]{artigos/*/refs.bib}
+
+% Dentro do documento, junto aos demais artigos:
+\begin{refsection}
+  \import{artigos/artigo_04/}{artigo.tex}
+\end{refsection}
+~~~
+
+O artigo já chama `\referenciasartigo` ao final. A equipe integradora deve
+retirar da inclusão final o modelo de demonstração depois de adicionar os
+artigos reais.
 
 ## Sincronização com GitHub e Overleaf
 
-O GitHub é a fonte oficial deste livro. A instância local do Overleaf Community
-Edition serve para edição e prévia do PDF, mas não oferece sincronização Git
-nativa. Use o script abaixo a partir da raiz do repositório:
+O GitHub é a fonte versionada do livro. `scripts/sync-github.sh` atualiza ou
+publica commits por fast-forward e pode gerar um ZIP com os arquivos do commit
+atual para importar no Overleaf Community Edition. A árvore de trabalho precisa
+estar limpa; divergências de histórico fazem o script parar para resolução
+manual.
 
-```bash
-scripts/sync-github.sh pull
-```
+~~~bash
+scripts/sync-github.sh pull    # traz origin/branch para a branch local e gera ZIP
+scripts/sync-github.sh push    # envia commits locais e gera ZIP
+scripts/sync-github.sh package # gera ZIP local, sem acessar a rede
+~~~
 
-O comando atualiza a branch local por *fast-forward* a partir de `origin/main`
-e gera `dist/livro-tads-overleaf.zip`. Envie esse ZIP ao Overleaf e selecione
-`livro.tex` como arquivo principal.
+O pacote fica em `dist/livro-tads-overleaf.zip`. Importe-o no Overleaf e
+selecione `livro.tex` como documento principal. `TEXLIVE_IMAGE` afeta apenas a
+compilação local pelo Makefile; escolha a versão do compilador disponível nas
+configurações do projeto Overleaf.
 
-Outros comandos disponíveis:
+Para publicar o commit `HEAD` diretamente num projeto existente do Overleaf,
+use `scripts/sync-overleaf.sh`. Este é um envio protegido, não uma sincronização
+Git bidirecional: edições feitas no Overleaf precisam ser baixadas, comparadas e
+integradas localmente antes de novo envio.
 
-```bash
-# Publica commits locais no GitHub e recria o ZIP.
-scripts/sync-github.sh push
-
-# Apenas recria o ZIP do commit atual, sem acesso à rede.
-scripts/sync-github.sh package
-```
-
-O script interrompe a operação caso existam arquivos modificados sem commit ou
-se houver divergência de histórico, evitando sobrescrever trabalho local.
-
-### Publicar um snapshot protegido no Overleaf
-
-Depois de atualizar ou publicar um commit no GitHub, envie esse mesmo commit ao
-seu projeto existente do Overleaf com:
-
-```bash
+~~~bash
 OVERLEAF_URL=http://100.119.176.112 \
 OVERLEAF_EMAIL=voce@exemplo.com \
 OVERLEAF_ROOT_FOLDER_ID=ID_DA_PASTA_RAIZ \
 scripts/sync-overleaf.sh ID_DO_PROJETO
-```
+~~~
 
-Copie o ID da URL do projeto: em `http://100.119.176.112/project/ID_DO_PROJETO`,
-ele é o trecho após `/project/`. O script solicita a senha sem exibi-la e sempre
-publica apenas o `HEAD` do Git: exige uma árvore de trabalho limpa e nunca envia
-alterações ainda sem commit.
+O ID do projeto é o trecho após `/project/` na URL, com 24 caracteres
+hexadecimais. O ID da pasta-raiz é necessário na primeira publicação dessa
+cópia local do repositório; depois, fica registrado no estado local em `dist/`.
+O script pede a senha sem exibi-la se `OVERLEAF_PASSWORD` não estiver definida.
+Ele exige árvore de trabalho limpa e só publica arquivos versionados em `HEAD`.
 
-Na primeira execução, use um projeto vazio. Nas demais, antes de qualquer
-escrita, o script baixa o ZIP atual do Overleaf e compara os hashes de todos os
-arquivos que ele já gerencia. Se um arquivo tiver sido alterado ou removido no
-Overleaf, a execução falha sem apagar ou enviar nada. Arquivos existentes apenas
-no Overleaf são preservados; se o Git tentar criar um arquivo no mesmo caminho,
-o script também falha para que a decisão seja manual. Arquivos removidos do Git
-só são removidos do Overleaf quando o conteúdo remoto ainda corresponde à última
-publicação conhecida. O estado dessa relação é mantido em `dist/`, sem entrar no
-Git.
+Na primeira execução, o projeto Overleaf precisa estar vazio. Em publicações
+seguintes, o script compara o conteúdo remoto gerenciado com os hashes da
+publicação anterior e interrompe o envio se detectar edição ou remoção remota.
+Arquivos criados apenas no Overleaf são preservados; se coincidirem com um novo
+caminho local, o envio para para evitar sobrescrita. Um arquivo removido do Git
+só é removido do Overleaf quando ainda corresponde à última versão publicada.
+O script pode rodar em qualquer máquina que alcance a instância e não precisa
+de Docker nem acesso ao MongoDB.
 
-O script pode ser executado de qualquer máquina que alcance o Overleaf: ele não
-usa Docker nem MongoDB. Na primeira execução dessa cópia do repositório, defina
-`OVERLEAF_ROOT_FOLDER_ID`; o valor é salvo no estado local para as próximas.
-Esse ID pode ser obtido uma única vez no host do Toolkit com a consulta abaixo,
-ou na mensagem `joinProject` da conexão Socket.IO nas ferramentas de
-desenvolvedor do navegador (`project.rootFolder[0]._id`):
+Se ainda precisar localizar o ID da pasta-raiz, a consulta abaixo pode ser
+executada no host do Toolkit, substituindo o ID do projeto:
 
-```bash
+~~~bash
 docker exec mongo mongosh --quiet --eval \
   "const p=db.projects.findOne({_id:ObjectId('ID_DO_PROJETO')},{rootFolder:1}); print(p.rootFolder[0]._id.toString())" \
   sharelatex
-```
+~~~
 
-Esse é um *push* protegido, não um Git bidirecional: para trazer uma edição do
-Overleaf ao repositório, baixe o ZIP, faça a comparação/merge local e crie o
-commit antes de publicar de novo. Para `pull` e merge automáticos como Git, a
-instância precisa do Git Bridge do Overleaf Server Pro.
+## Arquivos gerados
+
+`build/` contém PDFs e artefatos de compilação; `dist/` contém o ZIP do Overleaf
+e o estado local da sincronização protegida. Ambos são ignorados pelo Git e não
+devem ser usados como cópia versionada do conteúdo-fonte.

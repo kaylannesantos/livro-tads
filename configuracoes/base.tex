@@ -44,6 +44,7 @@
 % junto do trecho que a apresenta, e caption fornece numeração/referência.
 \usepackage{float}
 \usepackage{caption}
+\usepackage{booktabs}
 \usepackage{indentfirst}
 \setlength{\parindent}{1.25cm}
 
@@ -64,19 +65,35 @@
 \usepackage[style=abnt,backend=biber]{biblatex}
 \defbibheading{nossabibliografia}{}
 
-% Cada artigo reinicia o contador de figuras ao abrir seu capítulo. Exiba apenas
-% algarismos arábicos (Figura 1, Figura 2), como indicado nas diretrizes.
+% Cada artigo reinicia o contador de figuras e tabelas ao abrir seu capítulo.
+% A nomenclatura segue os exemplos do template TCC/Monografia: designação,
+% número arábico e travessão antes do título (Figura 1 – Título; Tabela 1 – Título).
 \renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
 \DeclareCaptionFont{arialnarrowonze}{\fontsize{11}{13}\selectfont}
-\DeclareCaptionLabelFormat{livrofigura}{#1 #2}
+\DeclareCaptionLabelFormat{livrodesignacao}{#1 #2}
 \captionsetup[figure]{%
   position=top,
   font=arialnarrowonze,
   labelfont=bf,
-  labelformat=livrofigura,
-  labelsep=colon,
+  labelformat=livrodesignacao,
+  labelsep=endash,
   justification=centering,
   singlelinecheck=false
+}
+\captionsetup[table]{%
+  position=top,
+  font=arialnarrowonze,
+  labelfont=bf,
+  labelformat=livrodesignacao,
+  labelsep=endash,
+  justification=raggedright,
+  singlelinecheck=false
+}
+
+% Fonte abaixo de figuras e tabelas, como no template TCC/Monografia.
+\newcommand{\legend}[1]{%
+  \par\smallskip{\raggedright\noindent\fontsize{11}{13}\selectfont #1\par}%
 }
 
 % Seções do corpo do artigo: numeradas, alinhadas à esquerda e em verde,
