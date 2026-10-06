@@ -3,7 +3,7 @@
 % Público: equipe de diagramação. Este módulo controla páginas institucionais
 % e a abertura visual dos capítulos. Autores recebem apenas artigo_modelo/.
 
-% Use para ficha técnica, agradecimentos, prefácio e organizadores enquanto o
+% Use para ficha técnica, agradecimentos, prefácio e autores enquanto o
 % conteúdo final não foi entregue. Não elimine essas chamadas de livro.tex: a
 % ordem é exigida pelas diretivas; troque o marcador pelo conteúdo definitivo.
 \newcommand{\folhareservada}[1]{%
@@ -13,6 +13,28 @@
   \begin{center}\textbf{#1}\\[1cm]\textit{[Conteúdo editorial pendente]}\end{center}
   \vspace*{\fill}
   \clearpage
+}
+
+% Seção final de autores, inspirada no padrão do Livro - Sata: nome em destaque
+% e currículo logo abaixo. Os textos são preenchidos em autores.tex, conforme
+% cada autor enviar seu currículo.
+\newcommand{\autoreslivro}{%
+  \cleardoublepage
+  \definircabecalholivro
+  \chapter*{AUTORES}
+  \thispagestyle{fancy}%
+  \addcontentsline{toc}{chapter}{Autores}%
+  \markboth{Autores}{Autores}%
+  \input{autores.tex}%
+  \clearpage
+}
+
+\newcommand{\perfilautor}[2]{%
+  \par\medskip
+  \noindent{\large\bfseries\MakeUppercase{#1}}\par
+  \smallskip
+  \noindent #2\par
+  \medskip
 }
 
 % A contracapa deve usar a marca IFPI. A equipe de diagramação pode substituir

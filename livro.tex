@@ -16,8 +16,10 @@
 \folhaderosto
 % Páginas reservadas previstas na estrutura editorial; preencher antes da edição final.
 \folhareservada{Folha de rosto — verso e ficha técnica}
-\folhareservada{Agradecimentos}
-\folhareservada{Prefácio}
+% EM ANÁLISE — Agradecimentos: aguardando o conteúdo final.
+% \folhareservada{Agradecimentos}
+% EM ANÁLISE — Prefácio: aguardando o conteúdo final.
+% \folhareservada{Prefácio}
 
 \renewcommand{\contentsname}{Sumário}
 \tableofcontents
@@ -26,11 +28,12 @@
 
 % INCLUSÃO DOS ARTIGOS
 \begin{refsection}
-    \import{artigos/modelo_artigo/}{artigo.tex}
+\import{artigos/modelo_artigo/}{artigo.tex}
 \end{refsection}
 
 \backmatter
-\folhareservada{Organizadores}
+% SEÇÃO FINAL — Autores (substitui o tópico "Organizadores e Equipes").
+\autoreslivro
 \contracapareservada
 
 \end{document}

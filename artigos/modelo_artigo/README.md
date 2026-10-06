@@ -16,6 +16,10 @@ cp -R artigos/modelo_artigo artigos/artigo_04
 3. `refs.bib`: somente obras citadas no texto; informe URLs quando disponíveis.
 4. `imagens/`: imagens TIFF ou JPEG com pelo menos 300 DPI.
 
+Além do artigo, cada autor deve enviar seu currículo para a equipe editorial.
+Os currículos serão reunidos na seção final **Autores** do livro, com o nome do
+autor em destaque e o texto logo abaixo, conforme o modelo de `autores.tex`.
+
 O modelo é exclusivo para a categoria **Artigo**. Revisões temáticas, relatos
 de experiência e notas têm estruturas diferentes nas diretrizes.
 
