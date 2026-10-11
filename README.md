@@ -12,8 +12,8 @@ e texto de demonstração. No momento, `livro.tex` inclui somente
 digitais, imagens ilustrativas e dados fictícios. Ela demonstra o layout e não
 deve ser publicada como artigo real.
 
-Os dados de título, subtítulo e organização da capa e as páginas reservadas
-para conteúdo editorial continuam como campos ou marcadores a preencher. A
+Os dados de título, subtítulo e autoria da capa e a ficha catalográfica
+demonstrativa continuam como campos a preencher e validar. A
 marca IFPI usada no TCC está em `assets/marca-ifpi.pdf` e já aparece na capa,
 folha de rosto e contracapa. Antes da edição final, substitua os campos e
 integre os artigos aprovados.

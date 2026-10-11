@@ -15,6 +15,40 @@
   \clearpage
 }
 
+% Ficha catalográfica demonstrativa. Substitua este modelo fictício por uma
+% ficha validada antes da publicação e preencha os responsáveis editoriais.
+\newcommand{\fichacatalografica}{%
+  \clearpage
+  \thispagestyle{empty}%
+  \vspace*{\fill}
+  \begin{center}
+    \fbox{%
+      \begin{minipage}{0.86\textwidth}
+        \small
+        \textbf{MODELO FICTÍCIO — FICHA CATALOGRÁFICA}\par
+        \vspace{0.4cm}
+        \TituloLivro. \AutoresLivro. -- \LocalLivro, \the\year.\par
+        \vspace{0.3cm}
+        [Número de páginas] p. : il.\par
+        \vspace{0.3cm}
+        1. Tecnologia. 2. [Assunto]. I. Título.\par
+        \vspace{0.3cm}
+        CDD: [classificação] \hfill CDU: [classificação]\par
+        \vspace{0.5cm}
+        \hrule
+        \vspace{0.3cm}
+        \textbf{Equipes editoriais}\par
+        Revisão: [nome(s) dos membros]\par
+        Conselho editorial: [nome(s) dos membros]\par
+        Diagramação: [nome(s) dos membros]\par
+        Modelos: [nome(s) dos responsáveis]
+      \end{minipage}%
+    }
+  \end{center}
+  \vspace*{\fill}
+  \clearpage
+}
+
 % Seção final de autores, inspirada no padrão do Livro - Sata: nome em destaque
 % e currículo logo abaixo. Os textos são preenchidos em autores.tex, conforme
 % cada autor enviar seu currículo.
@@ -59,7 +93,7 @@
     \vspace*{5cm}
     {\fontsize{24}{28}\selectfont\color{sommagreen}\textbf{\TituloLivro}}\\[1cm]
     {\Large \SubtituloLivro}\\[3cm]
-    {\large Organização: \OrganizadoresLivro}
+    {\large Autores: \AutoresLivro}
     \vfill
     {\large \LocalLivro\\ \the\year}
   \end{titlepage}
@@ -71,30 +105,31 @@
     \vspace*{4cm}
     {\fontsize{20}{24}\selectfont\color{sommagreen}\textbf{\TituloLivro}}\\[1cm]
     {\Large \SubtituloLivro}\\[2cm]
-    {\large Organização: \OrganizadoresLivro}\\
+    {\large Autores: \AutoresLivro}\\
     \vfill
     {\large \LocalLivro\\ \the\year}
   \end{titlepage}
 }
 
-% Argumentos: título, subtítulo, autores/filiações/contatos, resumo e autores
-% (somente nomes) para a linha auxiliar no sumário. O título integral da
-% abertura é também o título usado no sumário.
-\newcommand{\capitulocapa}[5]{%
+% Abertura simples: identificação do capítulo, título, autoria, resumo e palavras-chave.
+\newcommand{\capitulocapa}[6]{%
   \cleardoublepage
   \refstepcounter{chapter}%
   \setcounter{section}{0}%
   \setcounter{table}{0}%
   \setcounter{figure}{0}%
   \registracapitulonosumario{\thechapter}{#1}{#5}%
-  \definircabecalhoartigo{#1}{#2}%
+  \definircabecalholivro
   \thispagestyle{fancy}%
-  \minicabecalhoartigo{\thechapter}%
   \begin{center}
+    {\large\bfseries Capítulo \thechapter}\\[0.8cm]
     {\fontsize{14}{16}\selectfont\color{sommagreen}\textbf{#1}\\ #2}\\[0.8cm]
-    {\fontsize{12}{14}\selectfont\textbf{#3}}\\[0.7cm]
-    \begin{minipage}{0.88\textwidth}\small #4\end{minipage}
+    {\fontsize{12}{14}\selectfont\textbf{#3}}\\[0.4cm]
+    \vspace{0.2cm}
+    \begin{minipage}{0.88\textwidth}
+      \small\textbf{Resumo.} #4\par\vspace{0.5cm}
+      \textbf{Palavras-chave:} #6
+    \end{minipage}
   \end{center}
-  \vspace{0.6cm}
   \clearpage
 }

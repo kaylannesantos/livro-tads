@@ -36,8 +36,8 @@ usam `\caption`, `\label` e `\legend` no ambiente `table`.
 
 Antes de enviar, confira: resumo/abstract com no máximo 250 palavras; até cinco
 palavras-chave sem repetir o título; e-mail e ORCID de cada autor; resultados
-verificáveis; declarações CRediT, conflito de interesses e aprovação ética;
-referências em conformidade com ABNT.
+verificáveis; referências em conformidade com ABNT. Cada autor também deve
+enviar seu currículo para a seção final de autores do livro.
 
 Após receber a pasta, a equipe integradora adiciona ao `livro.tex`:
 
